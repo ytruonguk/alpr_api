@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: ankr_api
+    ports:
+      - "5001:5555"
+    restart: unless-stopped
+    volumes:
+      - ./:/app
