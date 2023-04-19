@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, '/home/azureuser/ultimateALPR-SDK/python')
 from flask import Flask, request, jsonify
 from PIL import Image
 import base64
