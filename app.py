@@ -8,7 +8,6 @@ import uuid
 import ultimateAlprSdk
 import os.path
 
-
 app = Flask(__name__)
 
 @app.route("/")
