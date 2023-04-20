@@ -20,8 +20,8 @@ def process_image():
     image = request.json['image']
     imageName = uuid.uuid4().hex
     saveBase64Image(image, imageName)
-    # image, imageType = load_pil_image("images/" + imageName + ".jpeg")
-    # width, height = image.size
+    image, imageType = load_pil_image("images/" + imageName + ".jpeg")
+    width, height = image.size
     checkResult("Init", 
                 ultimateAlprSdk.UltAlprSdkEngine_init(json.dumps(JSON_CONFIG))
                )
