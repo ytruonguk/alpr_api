@@ -74,11 +74,11 @@ JSON_CONFIG = {
 
 JSON_CONFIG["assets_folder"] = "../../../assets"
 
-# IMAGE_TYPES_MAPPING = { 
-#         'RGB': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_RGB24,
-#         'RGBA': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_RGBA32,
-#         'L': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_Y
-# }
+IMAGE_TYPES_MAPPING = { 
+        'RGB': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_RGB24,
+        'RGBA': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_RGBA32,
+        'L': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_Y
+}
 
 # Load image
 def load_pil_image(path):
