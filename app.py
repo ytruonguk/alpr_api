@@ -117,7 +117,7 @@ def checkResult(operation, result):
             "message": result.phrase()
         }
     else:
-        return jsonify(result.json())
+        return result.json()
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=5555, debug=True)
