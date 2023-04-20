@@ -19,6 +19,21 @@ def process_image():
     image = request.json['image']
     imageName = uuid.uuid4().hex
     saveBase64Image(image, imageName)
+    image, imageType = load_pil_image("images/" + name + ".jpg")
+    width, height = image.size
+    checkResult("Init", 
+                ultimateAlprSdk.UltAlprSdkEngine_init(json.dumps(JSON_CONFIG))
+               )
+    checkResult("Process",
+                ultimateAlprSdk.UltAlprSdkEngine_process(
+                    imageType,
+                    image.tobytes(), # type(x) == bytes
+                    width,
+                    height,
+                    0, # stride
+                    1 # exifOrientation (already rotated in load_image -> use default value: 1)
+                )
+        )
     return {
         "text": "Processing image",
         "image": image
