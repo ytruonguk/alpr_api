@@ -7,6 +7,7 @@ from io import BytesIO
 import uuid
 import ultimateAlprSdk
 import os.path
+import json
 
 app = Flask(__name__)
 
