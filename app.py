@@ -35,10 +35,7 @@ def process_image():
                     1 # exifOrientation (already rotated in load_image -> use default value: 1)
                 )
         )
-    return {
-        "text": "Processing image",
-        "image": image
-    }
+    return result
 
 def saveBase64Image(data, name):
     bytes_decoded = base64.b64decode(data)
