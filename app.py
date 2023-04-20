@@ -5,7 +5,7 @@ from PIL import Image
 import base64
 from io import BytesIO
 import uuid
-import ultimateAlprSdk
+# import ultimateAlprSdk
 import os.path
 import json
 
@@ -20,12 +20,12 @@ def process_image():
     image = request.json['image']
     imageName = uuid.uuid4().hex
     saveBase64Image(image, imageName)
-    image, imageType = load_pil_image("images/" + imageName + ".jpeg")
-    width, height = image.size
+    # image, imageType = load_pil_image("images/" + imageName + ".jpeg")
+    # width, height = image.size
     checkResult("Init", 
                 ultimateAlprSdk.UltAlprSdkEngine_init(json.dumps(JSON_CONFIG))
                )
-    checkResult("Process",
+    result = checkResult("Process",
                 ultimateAlprSdk.UltAlprSdkEngine_process(
                     imageType,
                     image.tobytes(), # type(x) == bytes
@@ -77,11 +77,11 @@ JSON_CONFIG = {
 
 JSON_CONFIG["assets_folder"] = "../../../assets"
 
-IMAGE_TYPES_MAPPING = { 
-        'RGB': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_RGB24,
-        'RGBA': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_RGBA32,
-        'L': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_Y
-}
+# IMAGE_TYPES_MAPPING = { 
+#         'RGB': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_RGB24,
+#         'RGBA': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_RGBA32,
+#         'L': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_Y
+# }
 
 # Load image
 def load_pil_image(path):
@@ -115,9 +115,12 @@ def load_pil_image(path):
 def checkResult(operation, result):
     if not result.isOK():
         print(TAG + operation + ": failed -> " + result.phrase())
-        assert False
+        return {
+            "status": false,
+            "message": result.phrase()
+        }
     else:
-        print(TAG + operation + ": OK -> " + result.json())
+        return result.json()
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=5555, debug=True)
