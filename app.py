@@ -5,7 +5,7 @@ from PIL import Image
 import base64
 from io import BytesIO
 import uuid
-# import ultimateAlprSdk
+import ultimateAlprSdk
 import os.path
 import json
 
