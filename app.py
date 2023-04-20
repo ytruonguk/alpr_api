@@ -35,7 +35,7 @@ def process_image():
                     1 # exifOrientation (already rotated in load_image -> use default value: 1)
                 )
         )
-    return result
+    return json.loads(result)
 
 def saveBase64Image(data, name):
     bytes_decoded = base64.b64decode(data)
