@@ -112,10 +112,10 @@ def load_pil_image(path):
 def checkResult(operation, result):
     if not result.isOK():
         print(TAG + operation + ": failed -> " + result.phrase())
-        return {
+        return json.dumps({
             "status": False,
             "message": result.phrase()
-        }
+        })
     else:
         return result.json()
 
