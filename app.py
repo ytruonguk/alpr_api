@@ -8,6 +8,7 @@ import uuid
 import ultimateAlprSdk
 import os.path
 import json
+import os
 
 app = Flask(__name__)
 
@@ -35,6 +36,7 @@ def process_image():
                     1 # exifOrientation (already rotated in load_image -> use default value: 1)
                 )
         )
+    os.remove("images/" + imageName + ".jpeg")
     return json.loads(result)
 
 def saveBase64Image(data, name):
