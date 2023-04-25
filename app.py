@@ -113,7 +113,7 @@ def checkResult(operation, result):
     if not result.isOK():
         print(TAG + operation + ": failed -> " + result.phrase())
         return {
-            "status": false,
+            "status": False,
             "message": result.phrase()
         }
     else:
