@@ -114,6 +114,7 @@ def load_pil_image(path):
 def checkResult(operation, result):
     if not result.isOK():
         print(TAG + operation + ": failed -> " + result.phrase())
+        ultimateAlprSdk.UltAlprSdkEngine_deInit()
         return json.dumps({
             "status": False,
             "message": result.phrase()
