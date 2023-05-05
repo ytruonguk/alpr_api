@@ -74,7 +74,7 @@ JSON_CONFIG = {
     "recogn_score_type": "min"
 }
 
-JSON_CONFIG["assets_folder"] = "../../../assets"
+JSON_CONFIG["assets_folder"] = "/home/azureuser/ultimateALPR-SDK/assets"
 
 IMAGE_TYPES_MAPPING = { 
         'RGB': ultimateAlprSdk.ULTALPR_SDK_IMAGE_TYPE_RGB24,
