@@ -21,7 +21,7 @@ def process_image():
     image = request.json['image']
     imageName = uuid.uuid4().hex
     saveBase64Image(image, imageName)
-    image, imageType = load_pil_image("images/" + imageName + ".jpeg")
+    image, imageType = load_pil_image("/home/azureuser/ultimateALPR-SDK/binaries/linux/x86_64/images/" + imageName + ".jpeg")
     width, height = image.size
     checkResult("Init", 
                 ultimateAlprSdk.UltAlprSdkEngine_init(json.dumps(JSON_CONFIG))
@@ -36,14 +36,14 @@ def process_image():
                     1 # exifOrientation (already rotated in load_image -> use default value: 1)
                 )
         )
-    os.remove("images/" + imageName + ".jpeg")
+    os.remove("/home/azureuser/ultimateALPR-SDK/binaries/linux/x86_64/images/" + imageName + ".jpeg")
     return json.loads(result)
 
 def saveBase64Image(data, name):
     bytes_decoded = base64.b64decode(data)
     img = Image.open(BytesIO(bytes_decoded))
     out_jpg = img.convert("RGB")
-    out_jpg.save("images/" + name + ".jpeg")
+    out_jpg.save("/home/azureuser/ultimateALPR-SDK/binaries/linux/x86_64/images/" + name + ".jpeg")
 
 TAG = "[PythonRecognizer] "
 
